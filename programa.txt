@@ -1,0 +1,33 @@
+PROGRAM PruebaFinal .
+
+DIVISION DATA .
+PIC 9 nivel = 10 .
+PIC 9 puntos = 0 .
+
+DIVISION PROCEDURE .
+DISPLAY "--- Iniciando Test del Interprete ---" .
+
+
+IF nivel >= 10 THEN
+    DISPLAY "Nivel experto detectado." .
+    MOVE 500 TO puntos .
+ELSE
+    DISPLAY "Nivel bajo detectado." .
+END-IF .
+
+DISPLAY "Puntos asignados: " .
+DISPLAY puntos .
+
+EVALUATE nivel
+    WHEN 5 . 
+        DISPLAY "Rango: Bronce" . 
+        STOP CASE .
+    WHEN 10 . 
+        DISPLAY "Rango: Oro" . 
+        DISPLAY "El STOP CASE deberia frenar aca" .
+        STOP CASE .
+    WHEN OTHER . 
+        DISPLAY "Rango: Desconocido" .
+END-EVALUATE .
+
+STOP RUN .
