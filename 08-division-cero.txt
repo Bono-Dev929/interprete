@@ -1,0 +1,9 @@
+** Error esperado: division por cero
+PROGRAM ErrorDivisionCero.
+DIVISION DATA.
+PIC 9 total = 10.
+PIC 9 cero = 0.
+DIVISION PROCEDURE.
+MOVE total / cero TO total.
+DISPLAY total.
+STOP RUN.

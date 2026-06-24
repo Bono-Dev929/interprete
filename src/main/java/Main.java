@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        String file = args.length > 0 ? args[0] : "programa.txt";
+        String file = args.length > 0 ? args[0] : "07-tipos-incompatibles.txt";
         CharStream input = CharStreams.fromFileName(file);
 
         MiniLangLexer  lexer  = new MiniLangLexer(input);

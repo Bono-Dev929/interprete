@@ -1,0 +1,44 @@
+** Programa de prueba: ejercita toda la jerarquia de exp
+PROGRAM PruebaExpresiones.
+DIVISION DATA.
+PIC 9 a = 10.
+PIC 9 b = 3.
+PIC V c = 2.5.
+PIC X mensaje = "Resultado".
+PIC BOOLEAN activo = TRUE.
+DIVISION PROCEDURE.
+
+DISPLAY mensaje.
+
+** Aritmetica simple: precedencia de * sobre +
+MOVE a + b * 2 TO a.
+DISPLAY a.
+
+** Parentesis para forzar otro orden
+MOVE (a + b) * (a - b) TO a.
+DISPLAY a.
+
+** Unario: menos
+MOVE -b TO b.
+DISPLAY b.
+
+** Logica: AND combinando una relacional con un booleano
+IF a > 10 AND activo THEN
+    DISPLAY "Mayor a diez y activo".
+ELSE
+    DISPLAY "No cumple".
+END-IF.
+
+** Logica: OR y NOT
+IF NOT activo OR a <= 50 THEN
+    DISPLAY "Segunda condicion".
+END-IF.
+
+** Relacional: distinto
+IF a <> b THEN
+    DISPLAY "Son distintos".
+ELSE
+    DISPLAY "Son iguales".
+END-IF.
+
+STOP RUN.

@@ -1,0 +1,8 @@
+** Error esperado: incompatibilidad de tipos (asignar STRING a una variable numerica)
+PROGRAM ErrorTipos.
+DIVISION DATA.
+PIC 9 cantidad = 5.
+DIVISION PROCEDURE.
+MOVE "no soy un numero" TO cantidad.
+DISPLAY cantidad.
+STOP RUN.

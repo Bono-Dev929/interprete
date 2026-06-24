@@ -1,0 +1,16 @@
+** Programa de prueba: declaracion y operaciones basicas
+PROGRAM Basico.
+DIVISION DATA.
+PIC 9 edad = 20.
+PIC V altura = 1.75.
+PIC X nombre = "Ana".
+PIC BOOLEAN activo = TRUE.
+DIVISION PROCEDURE.
+DISPLAY nombre.
+DISPLAY edad.
+DISPLAY altura.
+MOVE edad + 5 TO edad.
+DISPLAY edad.
+MOVE edad * 2 TO edad.
+DISPLAY edad.
+STOP RUN.

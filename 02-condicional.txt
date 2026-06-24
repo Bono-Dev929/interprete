@@ -1,0 +1,26 @@
+** Programa de prueba: condicional if-else
+PROGRAM Condicional.
+DIVISION DATA.
+PIC 9 nota = 7.
+DIVISION PROCEDURE.
+IF nota >= 6 THEN
+    DISPLAY "Aprobado".
+ELSE
+    DISPLAY "Desaprobado".
+END-IF.
+
+** Caso anidado: nota dentro de un if dentro de otro if
+PIC 9 nota2 = 9.
+IF nota2 >= 6 THEN
+    IF nota2 >= 9 THEN
+        DISPLAY "Excelente".
+    ELSE
+        DISPLAY "Aprobado".
+    END-IF.
+ELSE
+    DISPLAY "Desaprobado".
+END-IF.
+
+*> Esto es un comentario de bloque
+   que ocupa varias lineas y se ignora completo <*
+STOP RUN.
