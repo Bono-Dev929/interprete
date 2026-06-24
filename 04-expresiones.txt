@@ -1,12 +1,12 @@
 ** Programa de prueba: expresiones aritmeticas, relacionales y logicas combinadas
 PROGRAM Expresiones.
 DIVISION DATA.
-PIC 9 a = 10.
-PIC 9 b = 3.
+PIC I a = 10.
+PIC I b = 3.
 PIC V resultado = 0.0.
 PIC BOOLEAN esValido = TRUE.
 DIVISION PROCEDURE.
-MOVE a + b * 2 TO resultado.
+MOVE (a + b * 2) TO resultado.
 DISPLAY resultado.
 
 IF a > b AND esValido THEN
@@ -21,6 +21,6 @@ ELSE
     DISPLAY "Segunda condicion falsa".
 END-IF.
 
-MOVE (a + b) * (a - b) TO resultado.
+MOVE ((a + b) * (a - b)) TO resultado.
 DISPLAY resultado.
 STOP RUN.

@@ -15,20 +15,16 @@ public class Interpreter extends MiniLangBaseVisitor<Object> {
  // ---------- Valor (Asignación en la declaración) ----------
     @Override
     public Object visitValor(MiniLangParser.ValorContext ctx) {
-        if (ctx.NUM() != null) {
-            String texto = ctx.NUM().getText();
-            return texto.contains(".") ? Double.parseDouble(texto) : Integer.parseInt(texto);
-        } 
-        else if (ctx.STRING() != null) {
+        if (ctx.NUM_INT() != null)
+            return Integer.parseInt(ctx.NUM_INT().getText());
+        if (ctx.NUM_FLOAT() != null)
+            return Double.parseDouble(ctx.NUM_FLOAT().getText());
+        if (ctx.STRING() != null) {
             String texto = ctx.STRING().getText();
-            return texto.substring(1, texto.length() - 1); 
+            return texto.substring(1, texto.length() - 1);
         }
-        else if (ctx.TRUE() != null) {
-            return true;
-        }
-        else if (ctx.FALSE() != null) {
-            return false;
-        }
+        if (ctx.TRUE() != null)  return true;
+        if (ctx.FALSE() != null) return false;
         return null;
     }
 
@@ -145,33 +141,19 @@ public class Interpreter extends MiniLangBaseVisitor<Object> {
 
     @Override
     public Object visitAtomo(MiniLangParser.AtomoContext ctx) {
-        if (ctx.NUM() != null) {
-            // Si tiene un punto, es flotante (Double), sino es entero (Integer)
-            String texto = ctx.NUM().getText();
-            if (texto.contains(".")) {
-                return Double.parseDouble(texto);
-            } else {
-                return Integer.parseInt(texto);
-            }
-        } 
-        else if (ctx.STRING() != null) {
-            // Devuelve el texto sin las comillas
+        if (ctx.NUM_INT() != null)
+            return Integer.parseInt(ctx.NUM_INT().getText());
+        if (ctx.NUM_FLOAT() != null)
+            return Double.parseDouble(ctx.NUM_FLOAT().getText());
+        if (ctx.STRING() != null) {
             String texto = ctx.STRING().getText();
-            return texto.substring(1, texto.length() - 1); 
+            return texto.substring(1, texto.length() - 1);
         }
-        else if (ctx.TRUE() != null) {
-            return true;
-        }
-        else if (ctx.FALSE() != null) {
-            return false;
-        }
-        else if (ctx.ID() != null) {
-            // Si es una variable, la buscamos en nuestra memoria (SymbolTable)
-            String nombreVariable = ctx.ID().getText();
-            return symbolTable.getValue(nombreVariable);
-        }
-        // Si hay paréntesis, visitamos la expresión que está adentro
-        return visit(ctx.exp()); 
+        if (ctx.TRUE() != null)  return true;
+        if (ctx.FALSE() != null) return false;
+        if (ctx.ID() != null)
+            return symbolTable.getValue(ctx.ID().getText());
+        return visit(ctx.exp());
     }
     
  // ---------- Expresiones Lógicas (AND / OR) ----------
@@ -237,7 +219,7 @@ public class Interpreter extends MiniLangBaseVisitor<Object> {
 
     private SymbolTable.Type resolveType(MiniLangParser.TipoContext ctx) { String t = ctx.getText();
 	    return switch (t) {
-	    case "9"       -> SymbolTable.Type.INT;
+	    case "I"       -> SymbolTable.Type.INT;
 	    case "V"       -> SymbolTable.Type.FLOAT;
 	    case "X"       -> SymbolTable.Type.STRING;
 	    case "BOOLEAN" -> SymbolTable.Type.BOOLEAN;

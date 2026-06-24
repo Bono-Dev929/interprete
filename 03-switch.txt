@@ -1,19 +1,19 @@
 ** Programa de prueba: switch (variante diferencial)
 PROGRAM Switch.
 DIVISION DATA.
-PIC 9 dia = 3.
+PIC I dia = 3.
 DIVISION PROCEDURE.
-SWITCH dia.
-    WHEN 1:
+EVALUATE dia
+    WHEN 1.
         DISPLAY "Lunes".
-        BREAK.
-    WHEN 2:
+        STOP CASE.
+    WHEN 2.
         DISPLAY "Martes".
-        BREAK.
-    WHEN 3:
+        STOP CASE.
+    WHEN 3.
         DISPLAY "Miercoles".
-        BREAK.
-    DEFAULT:
+        STOP CASE.
+    WHEN OTHER.
         DISPLAY "Otro dia".
-END-SWITCH.
+END-EVALUATE.
 STOP RUN.

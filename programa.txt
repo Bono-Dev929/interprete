@@ -1,8 +1,8 @@
 PROGRAM PruebaFinal .
 
 DIVISION DATA .
-PIC 9 nivel = 10 .
-PIC 9 puntos = 0 .
+PIC I nivel = 10 .
+PIC I puntos = 0 .
 
 DIVISION PROCEDURE .
 DISPLAY "--- Iniciando Test del Interprete ---" .

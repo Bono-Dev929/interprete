@@ -13,12 +13,12 @@ programa: PROGRAM ID PUNTO
 // Sección de declaración de variables
 declaracion_variables: PIC tipo ID ('=' valor)? PUNTO;
 tipo: TIPO_NUMERICO | TIPO_STRING | TIPO_FLOTANTE | TIPO_BOOLEAN;
-valor: NUM | STRING | TRUE | FALSE;
+valor: NUM_INT | NUM_FLOAT | STRING | TRUE | FALSE;
 
 // Sección de instrucciones del programa
 procesamiento_programa: inst_asignacion | inst_salida | inst_if | inst_switch;
 
-inst_asignacion: MOVE exp TO ID PUNTO;
+inst_asignacion: MOVE PAREN_OPEN exp PAREN_CLOSE TO ID PUNTO;
 
 inst_salida: DISPLAY exp PUNTO;
 
@@ -31,12 +31,11 @@ inst_if:
 exp: exp_logica;
 
 exp_logica: exp_relacional ((AND | OR) exp_relacional)*;
-exp_relacional:
-	exp_aritmetica ((EQ | NEQ | LT | LEQ | GT | GEQ) exp_aritmetica)?;
+exp_relacional:exp_aritmetica ((EQ | NEQ | LT | LEQ | GT | GEQ) exp_aritmetica)?;
 exp_aritmetica: termino ((SUM | MINUS) termino)*;
 termino: factor ((MULT | DIV) factor)*;
 factor: NOT factor | MINUS factor | atomo;
-atomo: NUM | STRING | TRUE | FALSE | ID | PAREN_OPEN exp PAREN_CLOSE;
+atomo: NUM_INT | NUM_FLOAT | STRING | TRUE | FALSE | ID | PAREN_OPEN exp PAREN_CLOSE;
 
 
 inst_switch:
@@ -57,7 +56,7 @@ PUNTO: '.';
 
 // Declaración de variables
 PIC: 'PIC';
-TIPO_NUMERICO: '9';
+TIPO_NUMERICO: 'I';
 TIPO_STRING: 'X';
 TIPO_FLOTANTE: 'V';
 TIPO_BOOLEAN: 'BOOLEAN';
@@ -107,12 +106,13 @@ BREAK: 'STOP CASE';
 FALSE: 'FALSE';
 TRUE: 'TRUE';
 STRING: '"' (~["])* '"';
-NUM: [0-9]+ ('.' [0-9]+)?;
+NUM_FLOAT: [0-9]+ '.' [0-9]+;
+NUM_INT:   [0-9]+;
 ID: [a-zA-Z][a-zA-Z0-9-]*;
 
 // Comentarios (Corregido para soportar múltiples caracteres)
-COMMENT_LINE: '*' ~[\r\n]* -> skip;
-COMMENT_BLOCK_OPEN: '>' .? '<*' -> skip;
+COMMENT_LINE: {getCharPositionInLine() == 0}? '*' ~[\r\n]* -> skip;
+COMMENT_BLOCK: '*>' .*? '<*' -> skip;
 
 // Espacios en blanco
 WS: [ \t\r\n]+ -> skip;

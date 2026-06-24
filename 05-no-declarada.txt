@@ -1,8 +1,8 @@
 ** Error esperado: uso de variable no declarada (x nunca se declaro)
 PROGRAM ErrorNoDeclarada.
 DIVISION DATA.
-PIC 9 y = 5.
+PIC I y = 5.
 DIVISION PROCEDURE.
-MOVE x + 1 TO y.
+MOVE (x + 1) TO y.
 DISPLAY y.
 STOP RUN.

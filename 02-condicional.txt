@@ -1,7 +1,8 @@
 ** Programa de prueba: condicional if-else
 PROGRAM Condicional.
 DIVISION DATA.
-PIC 9 nota = 7.
+PIC I nota = 7.
+PIC I nota2 = 9.
 DIVISION PROCEDURE.
 IF nota >= 6 THEN
     DISPLAY "Aprobado".
@@ -10,7 +11,7 @@ ELSE
 END-IF.
 
 ** Caso anidado: nota dentro de un if dentro de otro if
-PIC 9 nota2 = 9.
+
 IF nota2 >= 6 THEN
     IF nota2 >= 9 THEN
         DISPLAY "Excelente".
