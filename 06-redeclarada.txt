@@ -1,7 +1,7 @@
 ** Error esperado: redeclaracion de la variable "y"
 PROGRAM ErrorRedeclarada.
 DIVISION DATA.
-PIC 9 y = 5.
+PIC I y = 5.
 PIC X y = "hola".
 DIVISION PROCEDURE.
 DISPLAY y.
