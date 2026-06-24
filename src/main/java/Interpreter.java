@@ -209,7 +209,7 @@ public class Interpreter extends MiniLangBaseVisitor<Object> {
         };
     }
     
-    // ... visitAtomo, visitExp_relacional, visitExp_logica, etc.
+    
 
     private double toDouble(Object o) {
         if (o instanceof Number n) return n.doubleValue();

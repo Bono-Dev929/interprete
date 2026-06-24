@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Ver Arbol ANTLR4",
+            "type": "antlr-debug",
+            "request": "launch",
+            "input": "${workspaceFolder}/02-condicional.txt",
+            "grammar": "${workspaceFolder}/src/main/antlr4/MiniLang.g4",
+            "startRule": "programa",
+            "printParseTree": true,
+            "visualParseTree": true
+        }
+    ]
+}

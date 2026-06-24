@@ -4,19 +4,19 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        String file = args.length > 0 ? args[0] : "05-no-declarada.txt";
+        String file = args.length > 0 ? args[0] : "01-basico.txt";
         CharStream input = CharStreams.fromFileName(file);
 
         MiniLangLexer  lexer  = new MiniLangLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         MiniLangParser parser = new MiniLangParser(tokens);
 
-        tokens.fill();
+        /*tokens.fill();
         for (Token token : tokens.getTokens()) {
             System.out.println("Token: " + token.getType() 
                 + " | Texto: '" + token.getText() 
                 + "' | Línea: " + token.getLine());
-        }
+        }*/
         
         // Errores de sintaxis
         parser.removeErrorListeners();

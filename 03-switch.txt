@@ -1,7 +1,7 @@
 ** Programa de prueba: switch (variante diferencial)
 PROGRAM Switch.
 DIVISION DATA.
-PIC I dia = 3.
+PIC I dia = 5.
 DIVISION PROCEDURE.
 EVALUATE dia
     WHEN 1.

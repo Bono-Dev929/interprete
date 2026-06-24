@@ -3,6 +3,6 @@ PROGRAM ErrorTipos.
 DIVISION DATA.
 PIC I cantidad = 5.
 DIVISION PROCEDURE.
-MOVE "no soy un numero" TO cantidad.
+MOVE ("no soy un numero") TO cantidad.
 DISPLAY cantidad.
 STOP RUN.

@@ -10,7 +10,7 @@ DISPLAY "--- Iniciando Test del Interprete ---" .
 
 IF nivel >= 10 THEN
     DISPLAY "Nivel experto detectado." .
-    MOVE 500 TO puntos .
+    MOVE (500) TO puntos .
 ELSE
     DISPLAY "Nivel bajo detectado." .
 END-IF .
