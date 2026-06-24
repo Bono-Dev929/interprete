@@ -108,5 +108,3 @@ STOP RUN .
 ```
 *Resultado esperado:* El motor semántico detiene el programa lanzando:  
 `[ERROR SEMÁNTICO] Incompatibilidad de tipos: No se puede asignar un valor de tipo STRING a la variable 'cantidad' de tipo INT.`
-
-![Árbol de Derivación del IF](Arbol.svg)
